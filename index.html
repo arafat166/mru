@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Faculty of Science & Technology - Muteesa 1 Royal University</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Tahoma', Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: RoyalBlue;
+            color: white;
+            line-height: 1.6;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+        
+        .navbar {
+            background-color:RoyalBlue; 
+            color: white;
+            padding: 0.8rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            width: 100%;
+        }
+        
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .logo {
+            height: 80px;
+            width: auto;
+        }
+        
+        .logo-text {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .logo-text h1 {
+            font-size: 1.5rem;
+            font-weight: 800;
+            line-height: 1.2;
+            color: white;
+        }
+        
+        .logo-text span {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color:white;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 20px;
+        }
+        
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            padding: 0.5rem 0.8rem;
+            border-radius: 4px;
+        }
+        
+        .nav-links a:hover {
+            background-color: rgba(white, 255, 255, 0.2);
+        }
+        
+        .container {
+            display: flex;
+            flex: 1;
+            width: 100%;
+        }
+
+        .sidebar {
+            width: 250px;
+            background: linear-gradient(to bottom, grey, RoyalBlue);
+            color: white;
+            padding: 2rem 0;
+            position: fixed;
+            top: 82px;
+            height:50px;
+            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+            z-index: 90;
+            overflow-y: auto;
+        }
+        
+        .sidebar-menu {
+            list-style: none;
+            width: 100%;
+        }
+        
+        .sidebar-menu li {
+            padding: 1rem 2rem;
+            border-left: 4px solid transparent;
+            transition: all 0.3s ease;
+            margin-bottom: 5px;
+            width: 100%;
+        }
+        
+        .sidebar-menu li:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+            border-left: 4px solid #4169E1;
+        }
+        
+        .sidebar-menu a {
+            color: white;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            font-weight: 500;
+            width: 100%;
+        }
+    
+        .main-content {
+            flex: 1;
+            padding: 2rem;
+            margin-left: 250px;
+            width:auto;
+            min-height: auto;
+        }
+        
+        .page-title {
+            color:white;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 5px solid black;
+            font-size: 1.8rem;
+        }
+        
+        .faculty-info {
+            background:white;
+            color:RoyalBlue;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 2rem;
+        }
+        
+        .faculty-info h2 {
+            color: #4169E1;
+            margin-bottom: 1rem;
+        }
+        
+        .faculty-info p {
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+        
+        .faculty-info li {
+            margin-left: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .courses-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 2rem;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            background-color: white;
+        }
+        
+        .courses-table th, 
+        .courses-table td {
+            padding: 1rem;
+            text-align: left;
+            border: 1px solid #ddd;
+        }
+        
+        .courses-table th {
+            background-color: #4169E1;
+            color: white;
+            font-weight: 600;
+            text-align: center;
+        }
+        
+        .courses-table tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        
+        .courses-table tr:hover {
+            background-color: #f0f8ff;
+        }
+        
+        .course-code {
+            font-weight: 600;
+            color: #4169E1;
+        }
+        
+        .fees {
+            font-weight: 600;
+            color: #2E8B57;
+        }
+        
+        footer {
+            background-color: #4169E1;
+            color: white;
+            text-align: center;
+            padding: 1.5rem;
+            margin-top: auto;
+            width: 100%;
+        }
+        
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .copyright {
+            text-align: center;
+        }
+        
+        @media (max-width: 992px) {
+            .container {
+                flex-direction: column;
+            }
+            
+            .sidebar {
+                width: 100%;
+                height: auto;
+                position: relative;
+                top: 0;
+                padding: 1rem 0;
+            }
+            
+            .sidebar-menu {
+                display: flex;
+                justify-content: space-around;
+                flex-wrap: wrap;
+            }
+            
+            .sidebar-menu li {
+                padding: 0.8rem 1.2rem;
+                border-left: none;
+                border-bottom: 4px solid transparent;
+                margin-bottom: 0;
+                width: auto;
+            }
+            
+            .sidebar-menu li:hover {
+                border-left: none;
+                border-bottom: 4px solid #4169E1;
+            }
+            
+            .main-content {
+                margin-left: 0;
+                width: 100%;
+            }
+            
+            .navbar {
+                flex-direction: column;
+                text-align: center;
+                padding: 1rem;
+            }
+            
+            .nav-links {
+                margin-top: 1rem;
+                justify-content: center;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .logo-container {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .nav-links {
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .sidebar-menu {
+                flex-direction: column;
+            }
+            
+            .courses-table {
+                display: block;
+                overflow-x: auto;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .navbar {
+                padding: 0.5rem;
+            }
+            
+            .logo-text h1 {
+                font-size: 1.2rem;
+            }
+            
+            .logo-text span {
+                font-size: 0.8rem;
+            }
+            
+            .main-content {
+                padding: 1rem;
+            }
+            
+            .faculty-info {
+                padding: 1.5rem;
+            }
+            
+            .page-title {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo-container">
+            <a href="https://mru.ac.ug/" target="_blank">
+                <img src="https://i.ibb.co/3bCqH28/muteesa-1-royal-university-mru-logo-png-seeklogo-550326.png" alt="MRU Logo" class="logo">
+            </a>
+            <div class="logo-text">
+                <h1>MUTEESA 1 ROYAL UNIVERSITY</h1>
+                <span>FACULTY OF SCIENCE AND TECHNOLOGY</span>
+            </div>
+        </div>
+        <ul class="nav-links">
+            <li><a href="#"><i class="fas fa-home"></i> Home</a></li>
+            <li><a href="#"><i class="fas fa-info-circle"></i> About</a></li>
+            <li><a href="#"><i class="fas fa-envelope"></i> Contact</a></li>
+        </ul>
+    </nav>
+    
+    <div class="container">
+        <aside class="sidebar">
+            <ul class="sidebar-menu">
+                <li><a href="#"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
+                <li><a href="#"><i class="fas fa-book"></i> Courses</a></li>
+                <li><a href="#"><i class="fas fa-cog"></i> Settings</a></li>
+                <li><a href="#"><i class="fas fa-user"></i> Profile</a></li>
+            </ul>
+        </aside>
+        
+        <main class="main-content">
+            <h1 class="page-title">Faculty of Science and Technology - Courses</h1>
+            
+            <div class="faculty-info">
+                <h1>About the Faculty</h1>
+                <p>The Faculty of Science and Technology at Muteesa 1 Royal University (MRU) in Uganda offers various programs in science, technology, engineering, and mathematics (STEM) fields. Some potential areas of focus might include: Undergraduate and graduate programs in sciences like biology, chemistry, physics, technology and engineering programs, research initiatives, and community outreach and partnerships.</p>
+                <p>Muteesa 1 Royal University has multiple campuses, including one in Masaka and another in Kampala.</p>
+            </div>
+            
+            <table class="courses-table">
+                <thead>
+                    <tr>
+                        <th width="60px">No.</th>
+                        <th width="100px">Course Code</th>
+                        <th width="200px">Course Name</th>
+                        <th width="150px">Fees (UGX)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td class="course-code">BPY 191</td>
+                        <td>Psychology</td>
+                        <td class="fees">4,000,000</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td class="course-code">CSN 341</td>
+                        <td>Cyber Security</td>
+                        <td class="fees">5,500,000</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td class="course-code">EN 401</td>
+                        <td>Engineering</td>
+                        <td class="fees">3,300,000</td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td class="course-code">BIT 210</td>
+                        <td>Information Technology</td>
+                        <td class="fees">4,200,000</td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <div class="faculty-info">
+                <h2>Our Programs</h2>
+                <ul>
+                    <li>Engineering</li>
+                    <li>Information Technology</li>
+                    <li>Cyber Security</li>
+                    <li>Physics</li>
+                    <li>Psychology</li>
+                    <li>Biology</li>
+                </ul>
+                <br>
+                <p>Our curriculum is regularly updated to align with industry trends and technological advancements.</p>
+                <br>
+                <p>We emphasize hands-on learning, critical thinking, and problem-solving skills to prepare the students of Uganda with qualifications for this ever-changing world of Science and Technology.</p>
+            </div>
+        </main>
+    </div>
+    <img src = https://i.ibb.co/3bCqH28/muteesa-1-royal-university-mru-logo-png-seeklogo-550326.png style ="width:80px;height:auto;>
+    <footer>
+        <div class="footer-content">
+            <div class="copyright">
+                <p>&copy; All rights reserved to Mulindwa Arafat 2025</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
